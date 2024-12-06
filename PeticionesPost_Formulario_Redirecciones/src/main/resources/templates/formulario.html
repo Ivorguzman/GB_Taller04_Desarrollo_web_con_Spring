@@ -1,32 +1,75 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html> <!-- Declaración del tipo de documento, define el documento como HTML5 -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Inicia el documento HTML con el idioma español y declara el namespace de Thymeleaf -->
+
 <head>
-<meta charset="utf-8">
-<title>com.ComoHacerPeticionesPost.controller</title>
+<meta charset="utf-8"> <!-- Especifica la codificación de caracteres para el documento (UTF-8) -->
+<title>com.ComoHacerPeticionesPost.controller</title> <!-- Título de la página, que aparecerá en la pestaña del navegador -->
 </head>
-<body>
+
 <body>
 
+    <h1>Formulario</h1> <!-- Título de la página -->
 
-	<h1>Formulario</h1>
-	<form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">
-		<p>
-			<input type="text" placeholder="Nombre" th:field="*{nombre}">
-		</p>
-		<p>
-			 <!-- El atributo th:field  necesita que el elemento <form> tenga el atributo  th:object="${persona}" con el objeto al
-			 que pertenece la propiedad telefono. Por ejemplo, si el objeto se llama usuario,
-			 el elemento <form th:object="${persona}"> . -->
-			<input type="number" placeholder="Ingresa un número" th:field="*{telefono}" />
-			<!-- El asterisco se usa para indicar que la expresión se evalúa sobre el objeto seleccionado con el atributo th:object. 
-			Por ejemplo, si tienes un objeto persona con una propiedad telefono, 
-			puedes usar th:object="$ {persona}" para seleccionar ese objeto y luego usar th:field="*{telefono}"
-			para vincular el campo de entrada con la propiedad
-			 telefono del objeto persona -->
-		</p>
-		<p>
-			<input type="submit" value="Enviar" />
-		</p>
-	</form>
+    <form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post"> <!-- Formulario que envía datos a "/ejemplopost/addpersona" utilizando el método POST -->
+        <p>
+            <input type="text" placeholder="Nombre" th:field="*{nombre}"> <!-- Campo de entrada para el nombre, ligado al objeto "persona" -->
+        </p>
+        <p>
+            <input type="number" placeholder="Ingresa un número" th:field="*{telefono}" /> <!-- Campo de entrada para el teléfono, ligado al objeto "persona" -->
+        </p>
+        <p>
+            <input type="submit" value="Enviar" /> <!-- Botón para enviar el formulario -->
+        </p>
+    </form>
 </body>
+
+<!-- 
+Explicación a nivel de bloque y flujo de ejecución:
+Declaración del tipo de documento y el elemento HTML:
+
+<!DOCTYPE html>: Esta declaración define el documento como HTML5.
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">: Inicia el documento HTML, especifica que el contenido está en español (lang="es") y define el namespace (xmlns:th="http://www.thymeleaf.org") necesario para usar las funcionalidades de Thymeleaf.
+
+Encabezado del documento:
+
+<head>: Contiene meta-información sobre el documento.
+
+<meta charset="utf-8">: Define la codificación de caracteres como UTF-8, asegurando que se muestren correctamente los caracteres especiales.
+
+<title>com.ComoHacerPeticionesPost.controller</title>: El título de la página web que se muestra en la pestaña del navegador.
+
+Cuerpo del documento:
+
+<body>: Contiene el contenido visible de la página web.
+
+<h1>Formulario</h1>: Título de la página que indica que es un formulario.
+
+<form action="#" th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">: Inicia un formulario que envía datos a la ruta /ejemplopost/addpersona utilizando el método POST.
+
+<input type="text" placeholder="Nombre" th:field="*{nombre}">: Campo de entrada para el nombre, ligado al objeto persona.
+
+<input type="number" placeholder="Ingresa un número" th:field="*{telefono}" />: Campo de entrada para el teléfono, ligado al objeto persona.
+
+<input type="submit" value="Enviar" />: Botón para enviar el formulario.
+
+Flujo de ejecución:
+Declaración del tipo de documento y configuración inicial:
+
+El navegador interpreta que el documento es HTML5 y prepara la página para contenido en español.
+
+Configuración del encabezado:
+
+La página establece la codificación de caracteres y define un título.
+
+Cuerpo y contenido dinámico:
+
+El formulario se configura para enviar datos a la ruta /ejemplopost/addpersona utilizando el método POST.
+
+Los campos de entrada para nombre y telefono están ligados al objeto persona definido en el modelo de datos.
+
+Al enviar el formulario, los datos se envían al servidor y se procesan en la ruta especificada.
+
+
+ -->
 </html>

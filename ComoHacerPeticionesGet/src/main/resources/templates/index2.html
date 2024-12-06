@@ -1,15 +1,61 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html> <!-- Declaración del tipo de documento, define el documento como HTML5 -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Inicia el documento HTML con el idioma español y declara el namespace de Thymeleaf -->
+
 <head>
-<meta charset="utf-8">
-<title>Como hacer Peticiones Get</title>
+<meta charset="utf-8"> <!-- Especifica la codificación de caracteres para el documento (UTF-8) -->
+<title>Como hacer Peticiones Get</title> <!-- Título de la página, que aparecerá en la pestaña del navegador -->
 </head>
+
 <body>
 
-	<h5>http://localhost:8080/peticiones2/Maria</h5>
-	<h3>
-		Metodo => @PathVariable(name = "nombre") String elNombre) <span
-			th:text="${nombre}"></span>
-	</h3>
+    <h5>http://localhost:????/peticiones2/Maria</h5> <!-- Muestra la ruta de la petición GET que se debe hacer para utilizar el segundo método -->
+    <h3>
+        Metodo => @PathVariable(name = "nombre") String elNombre) <span th:text="${nombre}"></span> <!-- Explicación del método utilizado y muestra el nombre recibido -->
+    </h3>
 </body>
+
+
+<!-- 
+Explicación a nivel de bloque y flujo de ejecución:
+Declaración del tipo de documento y el elemento HTML:
+
+<!DOCTYPE html>: Esta declaración define el documento como HTML5.
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">: Inicia el documento HTML, especifica que el contenido está en español (lang="es") y define el namespace (xmlns:th="http://www.thymeleaf.org") necesario para usar las funcionalidades de Thymeleaf.
+
+Encabezado del documento:
+
+<head>: Contiene meta-información sobre el documento.
+
+<meta charset="utf-8">: Define la codificación de caracteres como UTF-8, asegurando que se muestren correctamente los caracteres especiales.
+
+<title>Como hacer Peticiones Get</title>: El título de la página web que se muestra en la pestaña del navegador.
+
+Cuerpo del documento:
+
+<body>: Contiene el contenido visible de la página web.
+
+<h5>http://localhost:????/peticiones2/Maria</h5>: Muestra la ruta de la petición GET que se debe hacer para utilizar el segundo método.
+
+<h3>: Título que explica el método utilizado.
+
+Metodo => @PathVariable(name = "nombre") String elNombre) <span th:text="${nombre}"></span>: Describe el método utilizado (@PathVariable) y muestra el valor de nombre recibido a través de la petición GET usando Thymeleaf para inyectar el valor dinámico en el HTML.
+
+Flujo de ejecución:
+Declaración del tipo de documento y configuración inicial:
+
+El navegador interpreta que el documento es HTML5 y prepara la página para contenido en español.
+
+Configuración del encabezado:
+
+La página establece la codificación de caracteres y define un título.
+
+Cuerpo y contenido dinámico:
+
+Se muestra la ruta de la petición GET que se debe hacer (http://localhost:????/peticiones2/Maria).
+
+La explicación del método (@PathVariable) se muestra junto con el valor de nombre inyectado dinámicamente usando Thymeleaf (th:text="${nombre}").
+
+
+ -->
 </html>
