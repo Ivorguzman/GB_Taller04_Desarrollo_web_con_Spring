@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Servicios</title>
+</head>
+<body>
+    <h1>Lista de Países y Capitales alex</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre el mapa de países y capitales -->
+            <th:block th:each="entry : ${paisConCapital}">
+                <tr>
+                    <td th:text="${entry.value.pais}"></td>
+                    <td th:text="${entry.value.capital}"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+</body>
+
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>androCode-login</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link href="#" th:href="@{/css/login.css}" rel="stylesheet">
+<link href="#" th:href="@{/css/style.css}" rel="stylesheet">
+<style>
+.container2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+  <div class="container2">
+    <form class="form-signin" th:action="@{/check} " th:object="${MaaCredenciales}" method="post">
+      <h2 class="form-signin-heading">Login</h2>
+      <label for="inputUsername" class="sr-only">Usuario</label>
+      <input type="text" id="inputUsername" class="form-control" placeholder="Usuario" th:field="*{nombre}" />
+      <br>
+      <label for="inputPassword" class="sr-only">Contraseña</label>
+      <input type="password" id="inputPassword" class="form-control" placeholder="Contraseña" th:field="*{pass}" />
+      <br>
+      <div th:if="${MaaError != null}" class="alert alert-danger" role="alert">! Credenciales Incorrectas !</div>
+      <div th:if="${MaaLogOut != null}" class="alert alert-danger" role="alert">! Saliste de la aplicación !</div>
+      <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        <span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Entrar
+      </button>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<title>Listado de usuarios</title>
+</head>
+<body>
+  <h1>Listado de usuarios</h1>
+  <table border="1">
+    <tr>
+      <th>Id</th>
+      <th>Nombres</th>
+      <th>Apellidos</th>
+      <th>Teléfono</th>
+      <th>Correo</th>
+      <th>Dirección</th>
+    </tr>
+    <tr th:each="ThElUsuario : ${thUsuario}">
+      <!-- Modelo de datos (usuario) -->
+      <td th:text="${ThElUsuario.id}"></td>
+      <td th:text="${ThElUsuario.nombres}"></td>
+      <td th:text="${ThElUsuario.apellidos}"></td>
+      <td th:text="${ThElUsuario.telefono}"></td>
+      <td th:text="${ThElUsuario.correo}"></td>
+      <td th:text="${ThElUsuario.direccion}"></td>
+    </tr>
+  </table>
+  <h1>Agregar usuario</h1>
+  <form action="#" th:action="@{/user/add}" th:object="${thUser}" method="post">
+    <fieldset>
+      <legend> Introdusca Los Siguientes datos</legend>
+      <p>
+        Id:
+        <input type="number" th:field="*{id}" />
+      </p>
+      <p>
+        Nombre:
+        <input type="text" th:field="*{nombres}" />
+      </p>
+      <p>
+        Apellidos:
+        <input type="text" th:field="*{apellidos}" />
+      </p>
+      <p>
+        Teléfono:
+        <input type="tel" name="telf" th:field="*{telefono}" />
+      </p>
+      <p>
+        Correo:
+        <input type="email" name="email " th:field="*{correo}" />
+      </p>
+      <p>
+        Dirección:
+        <input type="text" th:field="*{direccion}" />
+      </p>
+      <p>
+        <input type="submit" value="Guardar" />
+      </p>
+    </fieldset>
+  </form>
+</body>
+</html>
+<!--
+  Se trata de una plantilla HTML que usa Thymeleaf, un motor de plantillas que se integra con Spring MVC y permite crear páginas web dinámicas usando expresiones y atributos especiales. El código hace lo siguiente:
+
+- Declara el tipo de documento como HTML y el espacio de nombres de Thymeleaf con el atributo xmlns:th en la etiqueta html. Esto permite usar los atributos que empiezan por th: en el resto del documento.
+
+- Define la codificación de caracteres como UTF-8 y el título de la página como "Listado de usuarios" en la etiqueta head.
+
+- Crea un encabezado de nivel 1 con el texto "Listado de usuarios" y una tabla con bordes en la etiqueta body. La tabla tiene seis columnas con los títulos "Id", "Nombres", "Apellidos", "Teléfono", "Correo" y "Dirección".
+
+- Usa el atributo th:each para iterar sobre una colección de objetos llamada thUsuario, que se pasa desde el controlador como un atributo del modelo. Cada objeto representa un usuario con sus datos. Por cada objeto, se crea una fila en la tabla con el atributo th:text para mostrar el valor de cada propiedad del objeto. Por ejemplo, th:text="${thUsuario.id}" muestra el id del usuario en la primera celda de la fila.
+
+- Crea otro encabezado de nivel 1 con el texto "Agregar usuario" y un formulario con el método post en la etiqueta body. El formulario tiene el atributo th:action para indicar la URL a la que se enviarán los datos, que en este caso es "/user/add". También tiene el atributo th:object para indicar el objeto que se va a crear o modificar con el formulario, que en este caso es un objeto Usuario vacío que se pasa desde el controlador como un atributo del modelo.
+
+- El formulario tiene seis campos de entrada para el id, el nombre, los apellidos, el teléfono, el correo y la dirección del usuario. Cada campo tiene el atributo th:field para enlazarlo con la propiedad correspondiente del objeto Usuario. Por ejemplo, th:field="*{nombres}" enlaza el campo con la propiedad nombres del objeto Usuario. El asterisco indica que se usa el objeto prefijado por th:object.
+
+- El formulario tiene un botón de tipo submit con el valor "Guardar" que envía los datos al controlador cuando se hace clic.
+
+ -->

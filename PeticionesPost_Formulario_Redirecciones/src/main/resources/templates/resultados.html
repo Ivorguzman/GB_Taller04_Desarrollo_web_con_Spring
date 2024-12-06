@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>com.ComoHacerPeticionesPost.controller</title>
+</head>
+<body>
+<body>
+
+	<table border="1">
+		<thead>
+			<tr>
+				<th><h1>Nombre </h1></th>
+				<th><h1>Teléfono</h1></th>
+		<tbody>
+			<tr>
+				<th>
+					<h3>
+						<span th:text="${persona.nombre}"></span>
+					</h3>
+				</th>
+
+				<th>
+					<h3>
+						<span th:text="${persona.telefono}"></span>
+					</h3>
+
+				</th>
+			</tr>
+		</tbody>
+
+	</table>
+
+</body>
+</html>

@@ -1,0 +1,224 @@
+package Servicios.model;
+
+public class PaisCapital {
+
+	private String pais;
+	private String capital;
+
+
+	public PaisCapital(String pais, String capital) {
+		this.pais = pais;
+		this.capital = capital;
+	}
+
+	public PaisCapital( ) {
+		System.out.println(this.pais);
+		System.out.println(this.capital);
+	}
+
+
+
+
+	public String getPais() {
+		
+		return this.pais;
+	}
+
+
+	public void setPais(String pais) {
+		this.pais = pais;
+	}
+
+
+	public String getCapital() {
+		return this.capital;
+	}
+
+
+	public void setCapital(String capital) {
+		this.capital = capital;
+	}
+
+
+
+
+}
+
+package Servicios.service.Impl;
+
+import java.util.HashMap;
+import java.util.Map;
+
+import org.springframework.stereotype.Service;
+
+import Servicios.model.PaisCapital;
+import Servicios.service.ItfPaisesCapital;
+
+
+@Service("segundoServiceImpl")
+public class SegundoServiceImpl implements ItfPaisesCapital {
+
+	@Override
+	public Map<String, PaisCapital> getCapitaPais() {
+
+
+		Map<String, PaisCapital> miMapaPaisCapital = new HashMap<>();
+
+		miMapaPaisCapital.put("p-1", new PaisCapital("Venezuela", "Caracas"));
+		miMapaPaisCapital.put("p-2", new PaisCapital("Colombia", "Bogota"));
+		miMapaPaisCapital.put("p-3", new PaisCapital("España", "Madrid"));
+		miMapaPaisCapital.put("p-4", new PaisCapital("Paris", "Francia"));
+		miMapaPaisCapital.put("p-5", new PaisCapital("Alemania", "Berlin"));
+
+		return miMapaPaisCapital;
+
+	}
+
+}
+
+@Controller
+@RequestMapping("/")
+public class serviceController_2 {
+
+
+	@Autowired
+	@Qualifier("segundoServiceImpl")
+	private SegundoServiceImpl valorInjectar;
+
+
+	@GetMapping("/paisesCapitales")
+	public String ListadoPaisesCapitales(Model modelo) {
+		Map<String, PaisCapital> paisConCapital = this.valorInjectar.getCapitaPais(); // obtener el map
+		modelo.addAttribute(paisConCapital); // agregar el map al modelo
+
+		return "paisescapitales.html";
+
+	}
+
+
+
+}
+
+
+
+VISTA:
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>Servicios</title>
+</head>
+<body>
+    <h1>Lista de Países y Capitales alex</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>País</th>
+                <th>Capital</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- Itera sobre el mapa de países y capitales -->
+            <th:block th:each="entry : ${paisConCapital}">
+                <tr>
+                    <td th:text="${entry.value.pais}"></td>
+                    <td th:text="${entry.value.capital}"></td>
+                </tr>
+            </th:block>
+        </tbody>
+    </table>
+</body>
+
+</html>
+
+
+ EXPLICACIOS:
+
+public class PaisCapital:
+Esto define una clase llamada PaisCapital.
+La clase tiene dos atributos privados: pais y capital.
+
+Constructor con argumentos:
+Java
+
+public PaisCapital(String pais, String capital) {
+    this.pais = pais;
+    this.capital = capital;
+}
+
+Este constructor acepta dos argumentos: pais y capital.
+Establece los valores de los atributos pais y capital utilizando los valores pasados como argumentos.
+
+Constructor sin argumentos:
+Java
+
+public PaisCapital() {
+    // No hace nada en este caso
+}
+
+Este constructor no acepta argumentos.
+
+No realiza ninguna acción específica.
+
+Métodos getter y setter:
+Los métodos getPais() y getCapital() son getters que devuelven los valores de los atributos pais y capital, respectivamente.
+Los métodos setPais(String pais) y setCapital(String capital) son setters que establecen los valores de los atributos pais y capital, respectivamente.
+
+SegundoServiceImpl:
+Esta clase implementa la interfaz ItfPaisesCapital.
+El método getCapitaPais() crea un mapa llamado miMapaPaisCapital y agrega algunas entradas de países y capitales.
+Los países y capitales se almacenan como objetos de la clase PaisCapital.
+El método devuelve el mapa completo.
+
+serviceController_2:
+Esta clase es un controlador de Spring.
+En el método ListadoPaisesCapitales, se obtiene el mapa de países y capitales a través del servicio segundoServiceImpl y se agrega al modelo.
+
+La vista asociada a esta ruta es “paisescapitales.html”.
+
+En resumen, este código crea una aplicación que proporciona información sobre países y sus capitales. El controlador serviceController_2 maneja la solicitud de la ruta “/paisesCapitales” y muestra los datos en la vista “paisescapitales.html
+
+
+
+
+*************************************** 
+
+ Como Establece los valores de los atributos pais y capital utilizando los valores pasados como argumentos.
+Constructor sin argumentos:?
+
+public class PaisCapital:
+Esta clase representa un país y su capital.
+Tiene dos atributos privados: pais y capital.
+Constructor con argumentos:
+Java
+
+public PaisCapital(String pais, String capital) {
+    this.pais = pais;
+    this.capital = capital;
+}
+Código generado por IA. Revisar y usar cuidadosamente. Más información sobre preguntas frecuentes.
+Este constructor acepta dos argumentos: pais y capital.
+Establece los valores de los atributos pais y capital utilizando los valores pasados como argumentos.
+Constructor sin argumentos:
+Java
+
+public PaisCapital() {
+    // No hace nada en este caso
+}
+
+Este constructor no acepta argumentos.
+No realiza ninguna acción específica aparte de imprimir los valores actuales de pais y capital (que en este caso serán null porque no se les asignó ningún valor).
+Métodos getter y setter:
+Los métodos getPais() y getCapital() son getters que devuelven los valores de los atributos pais y capital, respectivamente.
+Los métodos setPais(String pais) y setCapital(String capital) son setters que establecen los valores de los atributos pais y capital, respectivamente.
+SegundoServiceImpl:
+Esta clase implementa la interfaz ItfPaisesCapital.
+El método getCapitaPais() crea un mapa llamado miMapaPaisCapital y agrega algunas entradas de países y capitales.
+Los países y capitales se almacenan como objetos de la clase PaisCapital.
+El método devuelve el mapa completo.
+serviceController_2:
+Esta clase es un controlador de Spring.
+En el método ListadoPaisesCapitales, se obtiene el mapa de países y capitales a través del servicio segundoServiceImpl y se agrega al modelo.
+La vista asociada a esta ruta es “paisescapitales.html”.
+En resumen, este código crea una aplicación que proporciona información sobre países y sus capitales. El controlador serviceController_2 maneja la solicitud de la ruta “/paisesCapitales” y muestra los datos en la vista “paisescapitales.html”. Si todo está configurado correctamente, podrás ver la lista de países y capitales en esa vista. 😊
+

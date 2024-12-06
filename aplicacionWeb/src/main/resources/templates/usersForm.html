@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<link href="/aplicacionWeb/src/main/resources/css/style.css" th:href="@{/css/style.css}" rel="stylesheet">
+<style>
+.container2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 70vh;
+}
+
+h1 {
+	text-align: center;
+}
+</style>
+</head>
+<body>
+  <h1>Formulario</h1>
+  <div class="container2 ">
+
+    <form action="#" th:action="@{/usuarios/add}" th:object="${MaaUsuarios}" method="post">
+      <label for="inputId" class="sr-only"></label>
+      <input type="hidden"  id="inputId" class="form-control"  th:field="*{id}"></input>
+      <br>
+      <label for="inputName" class="sr-only"></label>
+      <input type="text" id="inputName" placeholder="Nombre" class="form-control" name="nombre" th:field="*{nombre}" th:value="${nombre}">
+      <br>
+      <label for="inputApellidos" class="sr-only"></label>
+      <input type="text" id="inputApellidos" placeholder="Apellidos" class="form-control" name="apellidos" th:field="*{apellidos}" th:value="${apellidos}">
+      <br>
+      <label for="inputTelefono" class="sr-only"></label>
+      <input type="text" id="inputTelefono" placeholder="Telefono" class="form-control" name="telefono" th:field="*{telefono}" th:value="${telefono}">
+      <br>
+      <label for="inputCorreo" class="sr-only"></label>
+      <input type="text" id="inputCorreo" placeholder="Correo" class="form-control" name="correo" th:field="*{correo}" th:value="${correo}">
+      <br>
+      <label for="inputDireccion" class="sr-only"></label>
+      <input type="text" id="inputDireccion" placeholder="Direccion" class="form-control" name="direccion" th:field="*{direccion}" th:value="${direccion}">
+      <br> <br>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        <span class="glyphicon glyphicon-ok" aria-hidden="true"></span> Aceptar
+      </button>
+      <button class="btn btn-lg btn-primary btn-block" type="submit">
+        <span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Anular
+      </button>
+    </form>
+  </div>
+</body>
+</html>

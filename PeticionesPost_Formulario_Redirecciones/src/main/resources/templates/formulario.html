@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<title>com.ComoHacerPeticionesPost.controller</title>
+</head>
+<body>
+<body>
+
+
+	<h1>Formulario</h1>
+	<form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">
+		<p>
+			<input type="text" placeholder="Nombre" th:field="*{nombre}">
+		</p>
+		<p>
+			 <!-- El atributo th:field  necesita que el elemento <form> tenga el atributo  th:object="${persona}" con el objeto al
+			 que pertenece la propiedad telefono. Por ejemplo, si el objeto se llama usuario,
+			 el elemento <form th:object="${persona}"> . -->
+			<input type="number" placeholder="Ingresa un número" th:field="*{telefono}" />
+			<!-- El asterisco se usa para indicar que la expresión se evalúa sobre el objeto seleccionado con el atributo th:object. 
+			Por ejemplo, si tienes un objeto persona con una propiedad telefono, 
+			puedes usar th:object="$ {persona}" para seleccionar ese objeto y luego usar th:field="*{telefono}"
+			para vincular el campo de entrada con la propiedad
+			 telefono del objeto persona -->
+		</p>
+		<p>
+			<input type="submit" value="Enviar" />
+		</p>
+	</form>
+</body>
+</html>

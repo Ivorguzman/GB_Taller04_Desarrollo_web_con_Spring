@@ -1,0 +1,11 @@
+@charset "UTF-8";
+.container_2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Ajusta la altura al 100% de la ventana */
+}
+
+.form-width {
+    width: 20%; /* Cambia el valor según tus preferencias */
+}
