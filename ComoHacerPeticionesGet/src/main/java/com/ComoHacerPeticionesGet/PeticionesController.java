@@ -12,6 +12,68 @@ import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAn
 public class PeticionesController {
 
 
+
+	/*
+	 * Diferencias clave entre los métodos public ModelAndView Peticiones1 y public ModelAndView Peticiones2,
+	 * aunque ambos manejan solicitudes GET y retornan un objeto ModelAndView:
+	 * 
+	 * Forma de obtener el parámetro:
+	 * 
+	 * @RequestParam (Método 1):
+	 * 
+	 * Utiliza @RequestParam para capturar un parámetro de la query string de la URL.
+	 * 
+	 * Ejemplo de URL: http://localhost:8080/peticiones1?clave_nombre=Maria
+	 * 
+	 * @RequestParam(name = "clave_nombre") String valor_nombre toma el valor de clave_nombre de la URL.
+	 * 
+	 * 
+	 * 
+	 * @PathVariable (Método 2):
+	 * 
+	 * Utiliza @PathVariable para capturar un parámetro directamente de la ruta de la URL.
+	 * 
+	 * Ejemplo de URL: http://localhost:8080/peticiones2/Maria
+	 * 
+	 * @PathVariable(name = "clave_nombre") String valor_nombre toma el valor de clave_nombre del segmento de la ruta.
+	 * 
+	 * 
+	 * 
+	 * 
+	 * Rutas de acceso:
+	 * 
+	 * Método 1:
+	 * 
+	 * La ruta es /peticiones1 y espera un parámetro en la query string (?clave_nombre=Maria).
+	 * 
+	 * 
+	 * 
+	 * Método 2:
+	 * 
+	 * La ruta es /peticiones2/{clave_nombre} y espera que el parámetro esté incluido como parte de la URL (/peticiones2/Maria).
+	 * 
+	 * 
+	 * 
+	 * Vistas retornadas:
+	 * 
+	 * Método 1:
+	 * 
+	 * Retorna la vista index.
+	 * 
+	 * 
+	 * 
+	 * Método 2:
+	 * 
+	 * Retorna la vista index2.
+	 * 
+	 * 
+	 * Resumen:
+	 * Método 1: Usa @RequestParam para capturar el parámetro desde la query string de la URL (?clave_nombre=Maria) y retorna la vista index.
+	 * 
+	 * Método 2: Usa @PathVariable para capturar el parámetro desde el segmento de la ruta de la URL (/peticiones2/Maria) y retorna la vista index2.
+	 * 
+	 * Estas diferencias permiten diferentes formas de pasar parámetros a la aplicación dependiendo de cómo se estructuren las URL.
+	 */
 	// localhost:8080/peticiones1/?clave_nombre=Maria
 	@GetMapping("/peticiones1") // Mapea solicitudes GET a /peticiones1 (localhost:8080/peticiones1?clave_nombre=Maria)
 	public ModelAndView Peticiones1(@RequestParam(name = "clave_nombre") String valor_nombre) {
@@ -100,7 +162,9 @@ public class PeticionesController {
 	 * 
 	 * Resolución y renderización de la vista:
 	 * 
-	 * El DispatcherServlet de Spring utiliza el ViewResolver para determinar y renderizar la vista index con el modelo que contiene el clave_nombre recibido.
+	 * * El DispatcherServlet de Spring utiliza el ViewResolver para determinar y renderizar la vista index con el modelo que contiene el clave_nombre recibido.
+	 * 
+	 * 
 	 */
 
 }
