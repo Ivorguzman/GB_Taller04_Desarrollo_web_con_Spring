@@ -1,13 +1,57 @@
-<!DOCTYPE html>
-<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<!DOCTYPE html> <!-- Declaración del tipo de documento, define el documento como HTML5 -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Inicia el documento HTML con el idioma español y declara el namespace de Thymeleaf -->
 
 <head>
-<meta charset="utf-8">
-<title>Insert title here</title>
+<meta charset="utf-8"> <!-- Especifica la codificación de caracteres para el documento (UTF-8) -->
+<title>Insert title here</title> <!-- Título de la página, que aparecerá en la pestaña del navegador -->
 </head>
+
 <body>
-<h2><span th:text="${personaEnClaseLista1.nombre}"></span></h2>
-<h2><span th:text="${personaEnClaseLista1.telefono}"></span></h2>
+<h2><span th:text="${personaEnClaseLista1.nombre}"></span></h2> <!-- Muestra el nombre de la persona utilizando la variable Thymeleaf -->
+<h2><span th:text="${personaEnClaseLista1.telefono}"></span></h2> <!-- Muestra el teléfono de la persona utilizando la variable Thymeleaf -->
 
 </body>
+
+
+<!--  
+Explicación a nivel de bloque y flujo de ejecución:
+Declaración del tipo de documento y el elemento HTML:
+
+<!DOCTYPE html>: Esta declaración define el documento como HTML5.
+
+<html lang="es" xmlns:th="http://www.thymeleaf.org">: Inicia el documento HTML, especifica que el contenido está en español (lang="es") y define el namespace (xmlns:th="http://www.thymeleaf.org") necesario para usar las funcionalidades de Thymeleaf.
+
+Encabezado del documento:
+
+<head>: Contiene meta-información sobre el documento.
+
+<meta charset="utf-8">: Define la codificación de caracteres como UTF-8, asegurando que se muestren correctamente los caracteres especiales.
+
+<title>Insert title here</title>: El título de la página web que se muestra en la pestaña del navegador.
+
+Cuerpo del documento:
+
+<body>: Contiene el contenido visible de la página web.
+
+<h2><span th:text="${personaEnClaseLista1.nombre}"></span></h2>: Utiliza la expresión de Thymeleaf th:text para mostrar el nombre de la persona en un elemento <h2>.
+
+<h2><span th:text="${personaEnClaseLista1.telefono}"></span></h2>: Utiliza la expresión de Thymeleaf th:text para mostrar el teléfono de la persona en un elemento <h2>.
+
+Flujo de ejecución:
+Declaración del tipo de documento y configuración inicial:
+
+El navegador interpreta que el documento es HTML5 y prepara la página para contenido en español.
+
+Configuración del encabezado:
+
+La página establece la codificación de caracteres y define un título.
+
+Cuerpo y contenido dinámico:
+
+Utilizando Thymeleaf, el servidor procesa las expresiones th:text para insertar valores dinámicos en el HTML.
+
+Las variables ${personaEnClaseLista1.nombre} y ${personaEnClaseLista1.telefono} se reemplazan con los valores correspondientes del modelo cuando se renderiza la página.
+
+
+ -->
 </html>
