@@ -30,11 +30,15 @@ public class MetodosController {
 	 * 
 	 * Importaciones: Incluyen las clases y anotaciones necesarias de Spring Framework para manejar las solicitudes GET y devolver vistas.
 	 * 
+	 * 
+	 * 
 	 * Anotaciones de la clase:
 	 * 
 	 * @Controller: Marca la clase como un controlador de Spring MVC, permitiendo manejar solicitudes HTTP y devolver vistas.
 	 * 
 	 * @RequestMapping("/"): Define que todas las rutas manejadas por esta clase comiencen desde el contexto raíz (/).
+	 * 
+	 * 
 	 * 
 	 * Métodos para manejar solicitudes:
 	 * 
@@ -53,6 +57,9 @@ public class MetodosController {
 	 * public ModelAndView Metodo3(): Método que maneja la solicitud GET a /metodo2.
 	 * 
 	 * return new ModelAndView("vista2");: Retorna una nueva instancia de ModelAndView con la vista vista2.
+	 * 
+	 * 
+	 * 
 	 * 
 	 * Flujo de ejecución:
 	 * Recepción de solicitudes:

@@ -11,17 +11,19 @@ import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAn
 @RequestMapping("/") // Mapea todas las rutas dentro de esta clase al contexto raíz
 public class PeticionesController {
 
-	@GetMapping("/peticiones1") // Mapea solicitudes GET a /peticiones1 (localhost:8080/peticiones1?nombre=Maria)
-	public ModelAndView Peticiones1(@RequestParam(name = "nombre") String elNombre) {
+
+	// localhost:8080/peticiones1/?clave_nombre=Maria
+	@GetMapping("/peticiones1") // Mapea solicitudes GET a /peticiones1 (localhost:8080/peticiones1?clave_nombre=Maria)
+	public ModelAndView Peticiones1(@RequestParam(name = "clave_nombre") String valor_nombre) {
 		ModelAndView mav = new ModelAndView("index"); // Crea una nueva instancia de ModelAndView con la vista "index"
-		mav.addObject("nombre", elNombre); // Añade el nombre como atributo al modelo
+		mav.addObject("clave_nombre", valor_nombre); // Añade el clave_nombre como atributo al modelo
 		return mav; // Retorna la instancia de ModelAndView
 	}
 
-	@GetMapping("/peticiones2/{nombre}") // Mapea solicitudes GET a /peticiones2/{nombre} (localhost:8080/peticiones2/Maria)
-	public ModelAndView Peticiones2(@PathVariable(name = "nombre") String elNombre) {
+	@GetMapping("/peticiones2/{clave_nombre}") // Mapea solicitudes GET a /peticiones2/{clave_nombre} (localhost:8080/peticiones2/Maria)
+	public ModelAndView Peticiones2(@PathVariable(name = "clave_nombre") String valor_nombre) {
 		ModelAndView mav = new ModelAndView("index2"); // Crea una nueva instancia de ModelAndView con la vista "index"
-		mav.addObject("nombre", elNombre); // Añade el nombre como atributo al modelo
+		mav.addObject("clave_nombre", valor_nombre); // Añade el clave_nombre como atributo al modelo
 		return mav; // Retorna la instancia de ModelAndView
 	}
 
@@ -50,28 +52,31 @@ public class PeticionesController {
 	 * 
 	 * @GetMapping("/peticiones1"): Mapea solicitudes GET a la ruta /peticiones1.
 	 * 
-	 * public ModelAndView Peticiones1(@RequestParam(name = "nombre") String elNombre): Método que maneja la solicitud GET a /peticiones1 y recibe un parámetro nombre desde
+	 * public ModelAndView Peticiones1(@RequestParam(name = "clave_nombre") String valor_nombre): Método que maneja la solicitud GET a /peticiones1 y recibe un parámetro
+	 * clave_nombre desde
 	 * la query string.
 	 * 
 	 * ModelAndView mav = new ModelAndView("index");: Crea una nueva instancia de ModelAndView con la vista index.
 	 * 
-	 * mav.addObject("nombre", elNombre);: Añade el nombre como atributo al modelo.
+	 * mav.addObject("clave_nombre", valor_nombre);: Añade el clave_nombre como atributo al modelo.
 	 * 
 	 * return mav;: Retorna la instancia de ModelAndView.
 	 * 
 	 * 
 	 * 
 	 * 
+	 * 
 	 * Peticiones2:
 	 * 
-	 * @GetMapping("/peticiones2/{nombre}"): Mapea solicitudes GET a la ruta /peticiones2/{nombre}.
+	 * @GetMapping("/peticiones2/{clave_nombre}"): Mapea solicitudes GET a la ruta /peticiones2/{clave_nombre}.
 	 * 
-	 * public ModelAndView Peticiones2(@PathVariable(name = "nombre") String elNombre): Método que maneja la solicitud GET a /peticiones2/{nombre} y recibe un parámetro
-	 * nombre desde la ruta.
+	 * public ModelAndView Peticiones2(@PathVariable(name = "clave_nombre") String valor_nombre): Método que maneja la solicitud GET a /peticiones2/{clave_nombre} y recibe un
+	 * parámetro
+	 * clave_nombre desde la ruta.
 	 * 
 	 * ModelAndView mav = new ModelAndView("index");: Crea una nueva instancia de ModelAndView con la vista index.
 	 * 
-	 * mav.addObject("nombre", elNombre);: Añade el nombre como atributo al modelo.
+	 * mav.addObject("clave_nombre", valor_nombre);: Añade el clave_nombre como atributo al modelo.
 	 * 
 	 * return mav;: Retorna la instancia de ModelAndView.
 	 * 
@@ -82,19 +87,20 @@ public class PeticionesController {
 	 * Flujo de ejecución:
 	 * Recepción de solicitudes:
 	 * 
-	 * Cuando se recibe una solicitud GET a la ruta /peticiones1?nombre=Maria, se llama al método Peticiones1, que obtiene el parámetro nombre desde la query string.
+	 * Cuando se recibe una solicitud GET a la ruta /peticiones1?clave_nombre=Maria, se llama al método Peticiones1, que obtiene el parámetro clave_nombre desde la query
+	 * string.
 	 * 
-	 * Cuando se recibe una solicitud GET a la ruta /peticiones2/Maria, se llama al método Peticiones2, que obtiene el parámetro nombre desde la ruta.
+	 * Cuando se recibe una solicitud GET a la ruta /peticiones2/Maria, se llama al método Peticiones2, que obtiene el parámetro clave_nombre desde la ruta.
 	 * 
 	 * Procesamiento de la solicitud:
 	 * 
-	 * El método Peticiones1 crea una instancia de ModelAndView, añade el nombre como atributo al modelo y retorna la vista index.
+	 * El método Peticiones1 crea una instancia de ModelAndView, añade el clave_nombre como atributo al modelo y retorna la vista index.
 	 * 
-	 * El método Peticiones2 crea una instancia de ModelAndView, añade el nombre como atributo al modelo y retorna la vista index.
+	 * El método Peticiones2 crea una instancia de ModelAndView, añade el clave_nombre como atributo al modelo y retorna la vista index.
 	 * 
 	 * Resolución y renderización de la vista:
 	 * 
-	 * El DispatcherServlet de Spring utiliza el ViewResolver para determinar y renderizar la vista index con el modelo que contiene el nombre recibido.
+	 * El DispatcherServlet de Spring utiliza el ViewResolver para determinar y renderizar la vista index con el modelo que contiene el clave_nombre recibido.
 	 */
 
 }
