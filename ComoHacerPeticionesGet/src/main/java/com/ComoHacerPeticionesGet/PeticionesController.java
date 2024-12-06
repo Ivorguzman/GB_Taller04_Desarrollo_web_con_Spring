@@ -25,7 +25,7 @@ public class PeticionesController {
 	 * 
 	 * Ejemplo de URL: http://localhost:8080/peticiones1?clave_nombre=Maria
 	 * 
-	 * @RequestParam(name = "clave_nombre") String valor_nombre toma el valor de clave_nombre de la URL.
+	 * (@RequestParam(name = "clave_nombre") String valor_nombre )toma el valor de clave_nombre de la URL.
 	 * 
 	 * 
 	 * 
