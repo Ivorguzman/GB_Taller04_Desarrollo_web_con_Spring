@@ -10,12 +10,12 @@
 
     <h1>Formulario</h1> <!-- Título de la página -->
 
-    <form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post"> <!-- Formulario que envía datos a "/ejemplopost/addpersona" utilizando el método POST -->
+    <form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${personas}" method="post"> <!-- Formulario que envía datos a "/ejemplopost/addpersona" utilizando el método POST -->
         <p>
             <input type="text" placeholder="Nombre" th:field="*{nombre}"> <!-- Campo de entrada para el nombre, ligado al objeto "persona" -->
         </p>
         <p>
-            <input type="number" placeholder="Ingresa un número" th:field="*{telefono}" /> <!-- Campo de entrada para el teléfono, ligado al objeto "persona" -->
+            <input type="number" placeholder="Teléfono" th:field="*{telefono}" /> <!-- Campo de entrada para el teléfono, ligado al objeto "persona" -->
         </p>
         <p>
             <input type="submit" value="Enviar" /> <!-- Botón para enviar el formulario -->

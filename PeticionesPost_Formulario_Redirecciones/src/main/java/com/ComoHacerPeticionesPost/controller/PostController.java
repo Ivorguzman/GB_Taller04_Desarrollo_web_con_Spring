@@ -7,18 +7,19 @@ import org.springframework.web.bind.annotation.ModelAttribute; // Importa la ano
 import org.springframework.web.bind.annotation.PostMapping; // Importa la anotación @PostMapping de Spring
 import org.springframework.web.bind.annotation.RequestMapping; // Importa la anotación @RequestMapping de Spring
 import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAndView de Spring
-import org.springframework.web.servlet.view.RedirectView; // Importa la clase RedirectView de Spring
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.ComoHacerPeticionesPost.model.Persona; // Importa la clase Persona del modelo
 
-@Controller // Indica que esta clase es un controlador de Spring MVC
 // @RequestMapping(value = "/ejemplopost", method = RequestMethod.POST)
+@Controller // Indica que esta clase es un controlador de Spring MVC
 @RequestMapping("/ejemplopost") // Forma abreviada de mapear todas las rutas dentro de esta clase al contexto "/ejemplopost"
-class PostController {
+public class PostController {
 
 	// ************* REDIRECCIONAMIENTOS *************************
 
 	// Forma 1 (Utilizando Mapeo de la ruta y redirigiendo con método)
+
 	@GetMapping("/") // Mapea solicitudes GET a la ruta raíz "/ejemplopost/"
 	public String Redirect1() {
 		return "redirect:/ejemplopost/form"; // Redirige a la ruta "/ejemplopost/form"
@@ -35,15 +36,15 @@ class PostController {
 	public String Form(Model modelo) {
 		System.out.println("modelo ==>" + modelo); // Imprime el modelo en la consola
 
-		modelo.addAttribute("persona", new Persona()); // Añade un atributo "persona" al modelo con una nueva instancia de Persona
+		modelo.addAttribute("personas", new Persona()); // Añade un atributo "persona" al modelo con una nueva instancia de Persona
 
 		return "formulario"; // Retorna la vista formulario.html
 	}
 
 	@PostMapping("/addpersona") // Método que maneja las solicitudes POST a "/addpersona"
-	public ModelAndView Resultados(@ModelAttribute("persona") Persona persona) { // Captura los datos del formulario recogidos de la clase Persona
+	public ModelAndView Resultados(@ModelAttribute("personas") Persona persona) { // Captura los datos del formulario recogidos de la clase Persona
 
-		ModelAndView mav = new ModelAndView("resultados.html"); // Retorna una nueva instancia de ModelAndView con la vista "resultados.html"
+		ModelAndView mav = new ModelAndView("resultados"); // Retorna una nueva instancia de ModelAndView con la vista "resultados.html"
 		mav.addObject("persona", persona); // Añade el objeto "persona" al modelo
 		return mav; // Retorna la instancia de ModelAndView
 	}
@@ -63,6 +64,8 @@ class PostController {
  * @Controller: Marca la clase como un controlador de Spring MVC, lo que permite manejar solicitudes HTTP y devolver vistas.
  * 
  * @RequestMapping("/ejemplopost"): Define que todas las rutas manejadas por esta clase comiencen desde el contexto /ejemplopost.
+ * 
+ * 
  * 
  * Métodos para redireccionamientos:
  * 
