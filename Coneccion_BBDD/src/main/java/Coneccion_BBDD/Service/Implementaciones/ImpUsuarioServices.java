@@ -1,41 +1,37 @@
-package Coneccion_BBDD.Service.Implementaciones;
+package Coneccion_BBDD.Service.Implementaciones; // Define el paquete donde se encuentra esta clase
 
-import java.util.List;
+import java.util.List; // Importa la clase List de java.util para manejar listas
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación @Autowired de Spring
+import org.springframework.beans.factory.annotation.Qualifier; // Importa la anotación @Qualifier de Spring
+import org.springframework.stereotype.Service; // Importa la anotación @Service de Spring
 
-import Coneccion_BBDD.Repository.ItfUsarioRepository;
-import Coneccion_BBDD.Service.ItfUsuarioService;
-import Coneccion_BBDD.model.Usuario;
-
-
-@Service("itfUsuarioService") // lógica de negocio o la manipulación de datos.
-public class ImpUsuarioServices implements ItfUsuarioService {
-
-	@Autowired
-	@Qualifier("itfUsarioRepository")
-	private ItfUsarioRepository itfUsarioRepository;
+import Coneccion_BBDD.Repository.ItfUsarioRepository; // Importa la interfaz ItfUsarioRepository
+import Coneccion_BBDD.Service.ItfUsuarioService; // Importa la interfaz ItfUsuarioService
+import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
 
-	@Override
+@Service("itfUsuarioService") // Marca la clase como un servicio de Spring con el nombre "itfUsuarioService"
+public class ImpUsuarioServices implements ItfUsuarioService { // Implementa la interfaz ItfUsuarioService
+
+	@Autowired // Indica que Spring debe inyectar una instancia del bean ItfUsarioRepository
+	@Qualifier("itfUsarioRepository") // Especifica cuál bean debe ser inyectado si hay más de uno
+	private ItfUsarioRepository itfUsarioRepository; // Declaración del repositorio
+
+	@Override // Indica que este método sobrescribe un método en la interfaz ItfUsuarioService
 	public List<Usuario> listAllUsuario() {
+		// Devuelve una lista de todos los usuarios encontrados en la base de datos
 		return this.itfUsarioRepository.findAll();
 	}
 
-
-	@Override
+	@Override // Indica que este método sobrescribe un método en la interfaz ItfUsuarioService
 	public Usuario addUsuario(Usuario usuario) {
-
 		/*
 		 * Devuelve el objeto usuario, después de guardarlo en la base de datos
 		 * usando el método save() del repositorio itfUsarioRepository.
 		 */
 		return this.itfUsarioRepository.save(usuario);
 	}
-
-
 
 }
 

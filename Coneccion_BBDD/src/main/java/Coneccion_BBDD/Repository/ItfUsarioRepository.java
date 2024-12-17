@@ -1,16 +1,13 @@
-package Coneccion_BBDD.Repository;
+package Coneccion_BBDD.Repository; // Define el paquete donde se encuentra esta clase
 
-import java.io.Serializable;
+import java.io.Serializable; // Importa la interfaz Serializable de java.io
 
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
+import org.springframework.data.jpa.repository.JpaRepository; // Importa la interfaz JpaRepository de Spring Data JPA
+import org.springframework.stereotype.Repository; // Importa la anotación @Repository de Spring
 
-import Coneccion_BBDD.model.Usuario;
+import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
-
-
-
-@Repository("itfUsarioRepository")
+@Repository("itfUsarioRepository") // Marca la interfaz como un repositorio de Spring con el nombre "itfUsarioRepository"
 public interface ItfUsarioRepository extends JpaRepository<Usuario, Serializable> {
 }
 
@@ -29,25 +26,19 @@ public interface ItfUsarioRepository extends JpaRepository<Usuario, Serializable
  * definir métodos adicionales según las necesidades del dominio. Por ejemplo, se podría definir un
  * método para buscar usuarios por nombre, correo electrónico o rol.
  * 
- * La anotación @Repository("itfUsarioRepository"):
- * indica que la interfaz ItfUsarioRepository es una
+ * La anotación @Repository("itfUsarioRepository") indica que la interfaz ItfUsarioRepository es una
  * clase que actúa como un repositorio de datos para la entidad Usuario.
  * 
- * Esta interfaz extiende de JpaRepository<Usuario, Serializable>,
- * que es una interfaz genérica de Spring Data JPA que proporciona métodos básicos
- * para operaciones CRUD (crear, leer, actualizar y borrar) con la base de datos .
- * Al usar esta anotación, se le asigna el nombre "itfUsarioRepository" al bean
- * que se crea a partir de esta interfaz, lo que permite inyectarlo en otras clases
- * usando @Autowired o @Resource .
+ * Esta interfaz extiende de JpaRepository<Usuario, Serializable>, que es una interfaz genérica de
+ * Spring Data JPA que proporciona métodos básicos para operaciones CRUD (crear, leer, actualizar
+ * y borrar) con la base de datos. Al usar esta anotación, se le asigna el nombre "itfUsarioRepository"
+ * al bean que se crea a partir de esta interfaz, lo que permite inyectarlo en otras clases usando
+ *
+ * @Autowired o @Resource.
  * 
  * La anotación @Repository también habilita la traducción automática de las excepciones específicas
- * de la persistencia a las excepciones de Spring DataAccessException .
+ * de la persistencia a las excepciones de Spring DataAccessException.
  */
-
-
-
-
-
 
 
 

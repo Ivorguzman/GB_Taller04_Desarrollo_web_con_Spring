@@ -1,130 +1,112 @@
-package Coneccion_BBDD.model;
+package Coneccion_BBDD.model; // Define el paquete donde se encuentra esta clase
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.Column; // Importa la anotación @Column de JPA
+import jakarta.persistence.Entity; // Importa la anotación @Entity de JPA
+import jakarta.persistence.GeneratedValue; // Importa la anotación @GeneratedValue de JPA
+import jakarta.persistence.Id; // Importa la anotación @Id de JPA
+import jakarta.persistence.Table; // Importa la anotación @Table de JPA
 
-@Entity // Anotacion de jpa
-@Table(name = "usuario") // Anotacion de jpa
-public class Usuario { // representa el nombre de la tabla en la base de datos
+@Entity // Marca la clase como una entidad JPA
+@Table(name = "usuario") // Especifica la tabla "usuario" en la base de datos
+public class Usuario { // Representa la entidad Usuario
 
-	@Id
-	@GeneratedValue // Genera automaticamente el numero continuo del id
-	@Column(name = "id")
-	private int id;// representa la columna en la base de datos
+	@Id // Marca el campo como clave primaria
+	@GeneratedValue // Genera automáticamente el valor del campo id
+	@Column(name = "id") // Mapea el campo a la columna "id" en la tabla
+	private int id; // Campo que representa la columna "id" en la base de datos
 
+	@Column(name = "nombre", length = 50) // Mapea el campo a la columna "nombre" con longitud máxima de 50 caracteres
+	private String nombre; // Campo que representa la columna "nombre" en la base de datos
 
-	@Column(name = "nombre", length = 50)
-	private String nombre;// representa la columna en la base de datos
+	@Column(name = "apellidos", length = 50) // Mapea el campo a la columna "apellidos" con longitud máxima de 50 caracteres
+	private String apellidos; // Campo que representa la columna "apellidos" en la base de datos
 
+	@Column(name = "telefono", length = 13) // Mapea el campo a la columna "telefono" con longitud máxima de 13 caracteres
+	private String telefono; // Campo que representa la columna "telefono" en la base de datos
 
-	@Column(name = "apellidos", length = 50)
-	private String apellidos;// representa la columna en la base de datos
+	@Column(name = "correo", length = 100) // Mapea el campo a la columna "correo" con longitud máxima de 100 caracteres
+	private String correo; // Campo que representa la columna "correo" en la base de datos
 
+	@Column(name = "direccion", length = 150) // Mapea el campo a la columna "direccion" con longitud máxima de 150 caracteres
+	private String direccion; // Campo que representa la columna "direccion" en la base de datos
 
-	@Column(name = "telefono", length = 13)
-	private String telefono;// representa la columna en la base de datos
-
-
-	@Column(name = "correo", length = 100)
-	private String correo;// representa la columna en la base de datos
-
-
-	@Column(name = "direccion", length = 150)
-	private String direccion;// representa la columna en la base de datos
-
-
-
+	// Constructor con parámetros
 	public Usuario(int id, String nombre, String apellidos, String telefono, String correo, String direccion) {
-		// public Usuario(int id, String nombres, String apellidos, String telefono, String correo) {
-		this.id = id;
-		this.nombre = nombre;
-		this.apellidos = apellidos;
-		this.telefono = telefono;
-		this.correo = correo;
-		this.direccion = direccion;
-
+		this.id = id; // Asigna el valor del parámetro id al campo id
+		this.nombre = nombre; // Asigna el valor del parámetro nombre al campo nombre
+		this.apellidos = apellidos; // Asigna el valor del parámetro apellidos al campo apellidos
+		this.telefono = telefono; // Asigna el valor del parámetro telefono al campo telefono
+		this.correo = correo; // Asigna el valor del parámetro correo al campo correo
+		this.direccion = direccion; // Asigna el valor del parámetro direccion al campo direccion
 	}
 
-
-
+	// Constructor sin parámetros
 	public Usuario( ) {
-
+		// Constructor vacío requerido por JPA
 	}
 
-
-
-
+	// Getter para el campo id
 	public int getId() {
-		return this.id;
+		return this.id; // Retorna el valor del campo id
 	}
 
+	// Setter para el campo id
 	public void setId(int id) {
-		this.id = id;
+		this.id = id; // Asigna el valor del parámetro id al campo id
 	}
 
-
-
-
+	// Getter para el campo nombre
 	public String getNombre() {
-		return this.nombre;
+		return this.nombre; // Retorna el valor del campo nombre
 	}
 
+	// Setter para el campo nombre
 	public void setNombre(String nombre) {
-		this.nombre = nombre;
+		this.nombre = nombre; // Asigna el valor del parámetro nombre al campo nombre
 	}
 
-
-
-
+	// Getter para el campo apellidos
 	public String getApellidos() {
-		return this.apellidos;
+		return this.apellidos; // Retorna el valor del campo apellidos
 	}
 
+	// Setter para el campo apellidos
 	public void setApellidos(String apellidos) {
-		this.apellidos = apellidos;
+		this.apellidos = apellidos; // Asigna el valor del parámetro apellidos al campo apellidos
 	}
 
-
-
-
+	// Getter para el campo telefono
 	public String getTelefono() {
-		return this.telefono;
+		return this.telefono; // Retorna el valor del campo telefono
 	}
 
+	// Setter para el campo telefono
 	public void setTelefono(String telefono) {
-		this.telefono = telefono;
+		this.telefono = telefono; // Asigna el valor del parámetro telefono al campo telefono
 	}
 
+	// Getter para el campo correo
 	public String getCorreo() {
-		return this.correo;
+		return this.correo; // Retorna el valor del campo correo
 	}
 
+	// Setter para el campo correo
 	public void setCorreo(String correo) {
-		this.correo = correo;
+		this.correo = correo; // Asigna el valor del parámetro correo al campo correo
 	}
 
-
-
+	// Getter para el campo direccion
 	public String getDireccion() {
-		return this.direccion;
+		return this.direccion; // Retorna el valor del campo direccion
 	}
 
-
-
+	// Setter para el campo direccion
 	public void setDireccion(String direccion) {
-		this.direccion = direccion;
+		this.direccion = direccion; // Asigna el valor del parámetro direccion al campo direccion
 	}
-
-
-
-
-
-
 
 }
+
 
 /*
  * La palabra clave import indica que se importan clases o paquetes que se necesitan para usar JPA.

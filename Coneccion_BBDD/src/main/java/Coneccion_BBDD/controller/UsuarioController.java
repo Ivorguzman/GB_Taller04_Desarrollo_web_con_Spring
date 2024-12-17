@@ -1,34 +1,31 @@
-package Coneccion_BBDD.controller;
+package Coneccion_BBDD.controller; // Define el paquete donde se encuentra esta clase
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.ModelAndView;
+import org.springframework.beans.factory.annotation.Autowired; // Importa la anotación @Autowired de Spring
+import org.springframework.beans.factory.annotation.Qualifier; // Importa la anotación @Qualifier de Spring
+import org.springframework.stereotype.Controller; // Importa la anotación @Controller de Spring
+import org.springframework.web.bind.annotation.GetMapping; // Importa la anotación @GetMapping de Spring
+import org.springframework.web.bind.annotation.ModelAttribute; // Importa la anotación @ModelAttribute de Spring
+import org.springframework.web.bind.annotation.PostMapping; // Importa la anotación @PostMapping de Spring
+import org.springframework.web.bind.annotation.RequestMapping; // Importa la anotación @RequestMapping de Spring
+import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAndView de Spring
 
-import Coneccion_BBDD.Service.ItfUsuarioService;
-import Coneccion_BBDD.model.Usuario;
+import Coneccion_BBDD.Service.ItfUsuarioService; // Importa la interfaz ItfUsuarioService
+import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
-
-
-@Controller
-@RequestMapping("/user")
+@Controller // Marca la clase como un controlador de Spring MVC
+@RequestMapping("/user") // Define la ruta base para este controlador
 public class UsuarioController {
 
-	@Autowired
-	@Qualifier("itfUsuarioService")
-	private ItfUsuarioService itfUsuarioService;
+	@Autowired // Indica que Spring debe inyectar una instancia del bean ItfUsuarioService
+	@Qualifier("itfUsuarioService") // Especifica cuál bean debe ser inyectado si hay más de uno
+	private ItfUsuarioService itfUsuarioService; // Declaración del servicio
 
-	@GetMapping("/list")
+	@GetMapping("/list") // Mapea las solicitudes GET a la ruta "/list"
 	public ModelAndView listarUsuarios() {
-
-		ModelAndView mav = new ModelAndView("list.html");
-		mav.addObject("thUsuario", this.itfUsuarioService.listAllUsuario());
-		mav.addObject("thUser", new Usuario());
-		return mav;
+		ModelAndView mav = new ModelAndView("list.html"); // Crea una instancia de ModelAndView con la vista "list.html"
+		mav.addObject("thUsuario", this.itfUsuarioService.listAllUsuario()); // Añade la lista de usuarios al ModelAndView
+		mav.addObject("thUser", new Usuario()); // Añade un nuevo objeto Usuario al ModelAndView
+		return mav; // Retorna el ModelAndView
 
 		/*
 		 * La línea de código; mav.addObject("thUser", new Usuario()); Vamos a desglosarla:
@@ -47,17 +44,13 @@ public class UsuarioController {
 		 * En resumen, esta línea de código está creando un objeto Usuario y lo está agregando al
 		 * ModelAndView con el nombre de atributo "thUser". Luego, este objeto se puede utilizar en la vista
 		 * para mostrar información relacionada con el usuario.
-		 * 
 		 */
 	}
 
-
-	@PostMapping("/add")
+	@PostMapping("/add") // Mapea las solicitudes POST a la ruta "/add"
 	public String agregarUsuario(@ModelAttribute(name = "VcUsuarios") Usuario elUsuario) {
-
-		this.itfUsuarioService.addUsuario(elUsuario);
-
-		return "redirect:/user/list";
+		this.itfUsuarioService.addUsuario(elUsuario); // Guarda el usuario utilizando el servicio
+		return "redirect:/user/list"; // Redirige a la lista de usuarios después de añadir uno nuevo
 
 		/*
 		 * Nota: name = "VcUsuarios" no es utilizada;
@@ -77,17 +70,14 @@ public class UsuarioController {
 		 * 
 		 * - Usuario elUsuario: Aquí estamos declarando un parámetro llamado elUsuario de tipo Usuario.
 		 * 
-		 * - Gratis: La palabra "Gratis" al final no parece estar relacionada directamente con la línea de
-		 * código. Puede ser un comentario o una nota adicional, pero no afecta la funcionalidad del código
-		 * en sí.
 		 * En resumen, esta línea de código define un método público llamado agregarUsuario que acepta un
 		 * objeto Usuario como parámetro y lo vincula con el atributo "VcUsuarios" en la vista. La función
-		 * completa estar dentro de una clase y se utiliza para agregar usuarios en algún
+		 * completa debe estar dentro de una clase y se utiliza para agregar usuarios en algún
 		 * contexto específico de una aplicación web.
-		 * 
 		 */
 	}
 }
+
 
 
 /*

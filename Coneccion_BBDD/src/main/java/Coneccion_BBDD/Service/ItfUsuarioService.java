@@ -1,20 +1,18 @@
-package Coneccion_BBDD.Service;
+package Coneccion_BBDD.Service; // Define el paquete donde se encuentra esta interfaz
 
-import java.util.List;
+import java.util.List; // Importa la clase List de java.util para manejar listas
 
-import Coneccion_BBDD.model.Usuario;
+import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
+public interface ItfUsuarioService { // Define una interfaz pública llamada ItfUsuarioService
 
-public interface ItfUsuarioService {
-
-
-	// Metodo para listar usuarios
+	// Método para listar todos los usuarios
 	public abstract List<Usuario> listAllUsuario();
+	// Declara un método abstracto que devuelve una lista de objetos Usuario
 
-
-	// Metodo para añadir Usuarios
+	// Método para añadir un nuevo usuario
 	public abstract Usuario addUsuario(Usuario usuario);
-
+	// Declara un método abstracto que acepta un objeto Usuario y devuelve un objeto Usuario
 
 }
 
@@ -33,7 +31,6 @@ public interface ItfUsuarioService {
  * Las llaves {} delimitan el cuerpo de la interfaz, donde se declaran los métodos abstractos que
  * debe implementar cualquier clase que implemente esta interfaz.
  * 
- * 
  * La palabra clave abstract indica que los métodos de la interfaz son abstractos, es decir, que no
  * tienen una implementación definida y que deben ser implementados por las clases que implementen
  * esta interfaz.
@@ -49,5 +46,6 @@ public interface ItfUsuarioService {
  * como entrada a los métodos. En este caso, el método listAllUsuario() no tiene ningún parámetro,
  * mientras que el método addUsuario(Usuario usuario) tiene un parámetro de tipo Usuario y nombre
  * usuario.
+ * 
  * El punto y coma ; indica el final de la declaración de los métodos abstractos.
  */
