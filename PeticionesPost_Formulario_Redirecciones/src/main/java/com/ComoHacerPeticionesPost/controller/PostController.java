@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute; // Importa la ano
 import org.springframework.web.bind.annotation.PostMapping; // Importa la anotación @PostMapping de Spring
 import org.springframework.web.bind.annotation.RequestMapping; // Importa la anotación @RequestMapping de Spring
 import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAndView de Spring
+import org.springframework.web.servlet.view.RedirectView;
 
 import com.ComoHacerPeticionesPost.model.Persona; // Importa la clase Persona del modelo
 
@@ -15,23 +16,31 @@ import com.ComoHacerPeticionesPost.model.Persona; // Importa la clase Persona de
 @RequestMapping("/ejemplopost") // Forma abreviada de mapear todas las rutas dentro de esta clase al contexto "/ejemplopost"
 public class PostController {
 
+
+	// ************* REDIRECCIONAMIENTOS Forma 1 (Utilizando redirect:) ("/ejemplopost/") *************************
 	/*
-	 * // ************* REDIRECCIONAMIENTOS ("/") *************************
-	 * 
-	 * // Forma 1 (Utilizando Mapeo de la ruta y redirigiendo con método)
-	 * 
 	 * @GetMapping("/") // Mapea solicitudes GET a la ruta raíz "/ejemplopost/"
 	 * public String Redirect1() {
 	 * return "redirect:/ejemplopost/form"; // Redirige a la ruta "/ejemplopost/form"
 	 * }
-	 * 
-	 * // Forma 2 (Utilizando RedirectView)
-	 * public RedirectView Redirect2() {
-	 * return new RedirectView(); // Retorna una nueva instancia de RedirectView
-	 * }
-	 * 
-	 * // ************* FIN REDIRECCIONAMIENTOS *************************
 	 */
+	// ************* FIN REDIRECCIONAMIENTO Forma 1 *************************
+
+
+
+
+
+
+	// ************* REDIRECCIONAMIENTOS Forma 2 Redirect2() ("/ejemplopost/") *************************
+	@GetMapping("/")
+	public RedirectView Redirect2() {
+		return new RedirectView("/ejemplopost/form"); // Retorna una nueva instancia de RedirectView
+	}
+	// ************* FIN REDIRECCIONAMIENTOS Forma 2 *************************
+
+
+
+
 
 	// ************* @GetMapping("/form") *************************
 
