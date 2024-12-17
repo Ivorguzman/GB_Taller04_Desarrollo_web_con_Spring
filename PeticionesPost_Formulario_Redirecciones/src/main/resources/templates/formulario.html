@@ -1,75 +1,98 @@
-<!DOCTYPE html> <!-- Declaración del tipo de documento, define el documento como HTML5 -->
-<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Inicia el documento HTML con el idioma español y declara el namespace de Thymeleaf -->
+<!DOCTYPE html> <!-- Define el documento como HTML5 -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Define el idioma del documento como español y añade el namespace para Thymeleaf -->
 
 <head>
-<meta charset="utf-8"> <!-- Especifica la codificación de caracteres para el documento (UTF-8) -->
-<title>com.ComoHacerPeticionesPost.controller</title> <!-- Título de la página, que aparecerá en la pestaña del navegador -->
+    <meta charset="utf-8"> <!-- Especifica la codificación de caracteres como UTF-8 -->
+    <title>Formulario de Persona</title> <!-- Título de la página -->
+    <style>
+        /* Estilos para el cuerpo del documento */
+        body {
+            font-family: Arial, sans-serif; /* Fuente base */
+            background-color: #f4f4f9; /* Color de fondo claro */
+            display: flex; /* Usar flexbox para centrar elementos */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            height: 100vh; /* Altura de la ventana gráfica completa */
+            margin: 0; /* Eliminar márgenes */
+        }
+        /* Contenedor del formulario */
+        .form-container {
+            background-color: #fff; /* Color de fondo blanco */
+            padding: 20px; /* Espaciado interno */
+            border-radius: 8px; /* Bordes redondeados */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+            width: 300px; /* Ancho fijo del contenedor */
+        }
+        /* Estilos para el título */
+        h1 {
+            font-size: 24px; /* Tamaño del texto */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+        /* Estilos para los campos de entrada de texto y número */
+        input[type="text"], input[type="number"] {
+            width: calc(100% - 22px); /* Ancho del campo de entrada */
+            padding: 10px; /* Espaciado interno */
+            margin-bottom: 10px; /* Espacio debajo de cada campo */
+            border: 1px solid #ccc; /* Borde con color gris claro */
+            border-radius: 4px; /* Bordes redondeados */
+        }
+        /* Estilos para el botón de envío */
+        input[type="submit"] {
+            width: 100%; /* Ancho del botón */
+            padding: 10px; /* Espaciado interno */
+            background-color: #007bff; /* Color de fondo azul */
+            color: #fff; /* Color del texto blanco */
+            border: none; /* Sin borde */
+            border-radius: 4px; /* Bordes redondeados */
+            cursor: pointer; /* Cursor de mano al pasar por encima */
+            font-size: 16px; /* Tamaño del texto */
+        }
+        /* Estilos para el botón de envío al pasar el cursor por encima */
+        input[type="submit"]:hover {
+            background-color: #0056b3; /* Color de fondo azul más oscuro */
+        }
+    </style>
 </head>
 
-<body>
-
-    <h1>Formulario</h1> <!-- Título de la página -->
-
-    <form action="#"  th:action="@{/ejemplopost/addpersona}" th:object="${personas}" method="post"> <!-- Formulario que envía datos a "/ejemplopost/addpersona" utilizando el método POST -->
-        <p>
-            <input type="text" placeholder="Nombre" th:field="*{nombre}"> <!-- Campo de entrada para el nombre, ligado al objeto "persona" -->
-        </p>
-        <p>
-            <input type="number" placeholder="Teléfono" th:field="*{telefono}" /> <!-- Campo de entrada para el teléfono, ligado al objeto "persona" -->
-        </p>
-        <p>
-            <input type="submit" value="Enviar" /> <!-- Botón para enviar el formulario -->
-        </p>
-    </form>
+<body> <!-- Contenedor del formulario -->
+    <div class="form-container">
+        <!-- Título del formulario -->
+        <h1>Formulario</h1>
+        <!-- Formulario para enviar datos -->
+        <form action="#" th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">
+            <!-- Campo de entrada para el nombre -->
+            <input type="text" placeholder="Nombre" th:field="*{nombre}">
+            <!-- Campo de entrada para el teléfono -->
+            <input type="number" placeholder="Teléfono" th:field="*{telefono}">
+            <!-- Botón para enviar el formulario -->
+            <input type="submit" value="Enviar">
+        </form>
+    </div>
 </body>
-
 <!-- 
-Explicación a nivel de bloque y flujo de ejecución:
-Declaración del tipo de documento y el elemento HTML:
 
-<!DOCTYPE html>: Esta declaración define el documento como HTML5.
+En Thymeleaf, el asterisco (*) dentro del atributo th:field tiene un propósito especial 
+para vincular los campos del formulario con los atributos del objeto que se envía al servidor.
+ Aquí hay una explicación detallada de cómo funcionan estos asteriscos en el contexto de Thymeleaf:
 
-<html lang="es" xmlns:th="http://www.thymeleaf.org">: Inicia el documento HTML, especifica que el contenido está en español (lang="es") y define el namespace (xmlns:th="http://www.thymeleaf.org") necesario para usar las funcionalidades de Thymeleaf.
+ 
+¿Qué Significan los Asteriscos (*)?
+* (Asterisco): Indica que el campo del formulario debe estar vinculado al objeto especificado por th:object.
+{nombre} y {telefono}: Son los nombres de los atributos del objeto que se están editando.
+ Estos deben coincidir con los nombres de los atributos en la clase del modelo.
+ 
+ 
+ 
+Cómo Funciona?
+El Objeto del Formulario: Cuando se carga el formulario, Thymeleaf espera un objeto de tipo
+ Persona que es establecido en el atributo th:object="${persona}" del formulario.
 
-Encabezado del documento:
+Vinculación Automática: El asterisco (*) indica a Thymeleaf que debe tomar el valor del atributo
+ nombre o telefono del objeto persona y vincularlo automáticamente con el campo de entrada del formulario.
 
-<head>: Contiene meta-información sobre el documento.
-
-<meta charset="utf-8">: Define la codificación de caracteres como UTF-8, asegurando que se muestren correctamente los caracteres especiales.
-
-<title>com.ComoHacerPeticionesPost.controller</title>: El título de la página web que se muestra en la pestaña del navegador.
-
-Cuerpo del documento:
-
-<body>: Contiene el contenido visible de la página web.
-
-<h1>Formulario</h1>: Título de la página que indica que es un formulario.
-
-<form action="#" th:action="@{/ejemplopost/addpersona}" th:object="${persona}" method="post">: Inicia un formulario que envía datos a la ruta /ejemplopost/addpersona utilizando el método POST.
-
-<input type="text" placeholder="Nombre" th:field="*{nombre}">: Campo de entrada para el nombre, ligado al objeto persona.
-
-<input type="number" placeholder="Ingresa un número" th:field="*{telefono}" />: Campo de entrada para el teléfono, ligado al objeto persona.
-
-<input type="submit" value="Enviar" />: Botón para enviar el formulario.
-
-Flujo de ejecución:
-Declaración del tipo de documento y configuración inicial:
-
-El navegador interpreta que el documento es HTML5 y prepara la página para contenido en español.
-
-Configuración del encabezado:
-
-La página establece la codificación de caracteres y define un título.
-
-Cuerpo y contenido dinámico:
-
-El formulario se configura para enviar datos a la ruta /ejemplopost/addpersona utilizando el método POST.
-
-Los campos de entrada para nombre y telefono están ligados al objeto persona definido en el modelo de datos.
-
-Al enviar el formulario, los datos se envían al servidor y se procesan en la ruta especificada.
-
+Enviar Datos al Servidor: Cuando el formulario se envía, los valores ingresados en los
+campos de entrada se asignan nuevamente a los atributos correspondientes del objeto persona y se envían al servidor.
 
  -->
+
 </html>

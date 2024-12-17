@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.ModelAttribute; // Importa la ano
 import org.springframework.web.bind.annotation.PostMapping; // Importa la anotación @PostMapping de Spring
 import org.springframework.web.bind.annotation.RequestMapping; // Importa la anotación @RequestMapping de Spring
 import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAndView de Spring
-import org.springframework.web.servlet.view.RedirectView;
 
 import com.ComoHacerPeticionesPost.model.Persona; // Importa la clase Persona del modelo
 
@@ -16,33 +15,41 @@ import com.ComoHacerPeticionesPost.model.Persona; // Importa la clase Persona de
 @RequestMapping("/ejemplopost") // Forma abreviada de mapear todas las rutas dentro de esta clase al contexto "/ejemplopost"
 public class PostController {
 
-	// ************* REDIRECCIONAMIENTOS *************************
+	/*
+	 * // ************* REDIRECCIONAMIENTOS ("/") *************************
+	 * 
+	 * // Forma 1 (Utilizando Mapeo de la ruta y redirigiendo con método)
+	 * 
+	 * @GetMapping("/") // Mapea solicitudes GET a la ruta raíz "/ejemplopost/"
+	 * public String Redirect1() {
+	 * return "redirect:/ejemplopost/form"; // Redirige a la ruta "/ejemplopost/form"
+	 * }
+	 * 
+	 * // Forma 2 (Utilizando RedirectView)
+	 * public RedirectView Redirect2() {
+	 * return new RedirectView(); // Retorna una nueva instancia de RedirectView
+	 * }
+	 * 
+	 * // ************* FIN REDIRECCIONAMIENTOS *************************
+	 */
 
-	// Forma 1 (Utilizando Mapeo de la ruta y redirigiendo con método)
-
-	@GetMapping("/") // Mapea solicitudes GET a la ruta raíz "/ejemplopost/"
-	public String Redirect1() {
-		return "redirect:/ejemplopost/form"; // Redirige a la ruta "/ejemplopost/form"
-	}
-
-	// Forma 2 (Utilizando RedirectView)
-	public RedirectView Redirect2() {
-		return new RedirectView(); // Retorna una nueva instancia de RedirectView
-	}
-
-	// ************* FIN REDIRECCIONAMIENTOS *************************
+	// ************* @GetMapping("/form") *************************
 
 	@GetMapping("/form") // Método que devuelve el formulario
 	public String Form(Model modelo) {
 		System.out.println("modelo ==>" + modelo); // Imprime el modelo en la consola
 
-		modelo.addAttribute("personas", new Persona()); // Añade un atributo "persona" al modelo con una nueva instancia de Persona
+		modelo.addAttribute("persona", new Persona()); // Añade un atributo "persona" al modelo con una nueva instancia de Persona
 
 		return "formulario"; // Retorna la vista formulario.html
 	}
 
+
+
+	// ************* @PostMapping("/addpersona") *************************
+
 	@PostMapping("/addpersona") // Método que maneja las solicitudes POST a "/addpersona"
-	public ModelAndView Resultados(@ModelAttribute("personas") Persona persona) { // Captura los datos del formulario recogidos de la clase Persona
+	public ModelAndView Resultados(@ModelAttribute("persona") Persona persona) { // Captura los datos del formulario recogidos de la clase Persona
 
 		ModelAndView mav = new ModelAndView("resultados"); // Retorna una nueva instancia de ModelAndView con la vista "resultados.html"
 		mav.addObject("persona", persona); // Añade el objeto "persona" al modelo

@@ -1,93 +1,82 @@
-<!DOCTYPE html> <!-- Declaración del tipo de documento, define el documento como HTML5 -->
-<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Inicia el documento HTML con el idioma español y declara el namespace de Thymeleaf -->
+<!DOCTYPE html> <!-- Define el documento como HTML5 -->
+<html lang="es" xmlns:th="http://www.thymeleaf.org"> <!-- Define el idioma del documento como español y añade el namespace para Thymeleaf -->
 
 <head>
-<meta charset="utf-8"> <!-- Especifica la codificación de caracteres para el documento (UTF-8) -->
-<title>com.ComoHacerPeticionesPost.controller</title> <!-- Título de la página, que aparecerá en la pestaña del navegador -->
+    <meta charset="utf-8"> <!-- Especifica la codificación de caracteres como UTF-8 -->
+    <title>Tabla Estilizada</title> <!-- Título de la página -->
+    <style>
+        /* Estilos para el cuerpo del documento */
+        body {
+            font-family: Arial, sans-serif; /* Fuente base */
+            background-color: #eef2f7; /* Color de fondo claro */
+            display: flex; /* Usar flexbox para centrar elementos */
+            justify-content: center; /* Centrar horizontalmente */
+            align-items: center; /* Centrar verticalmente */
+            height: 100vh; /* Altura de la ventana gráfica completa */
+            margin: 0; /* Eliminar márgenes */
+            flex-direction: column; /* Alinear elementos en columna */
+        }
+        /* Estilos para el título de la tabla */
+        .table-title {
+            text-align: center; /* Centrar el texto */
+            color: #007bff; /* Color azul */
+            font-size: 24px; /* Tamaño del texto */
+            margin-bottom: 20px; /* Espacio debajo del título */
+        }
+        /* Estilos para la tabla */
+        table {
+            border-collapse: collapse; /* Colapsar bordes para un diseño más limpio */
+            width: 15cm; /* Ancho fijo de 10 cm */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Sombra para darle profundidad */
+            margin: 0 auto; /* Centrar horizontalmente */
+        }
+        /* Estilos para las celdas de encabezado y datos */
+        th, td {
+            padding: 12px; /* Espacio interno de las celdas */
+            text-align: left; /* Alinear texto a la izquierda */
+            border-bottom: 1px solid #ddd; /* Línea inferior en cada celda */
+        }
+        th {
+            background-color: #007bff; /* Color de fondo azul para encabezados */
+            color: #fff; /* Texto en blanco */
+            text-transform: uppercase; /* Texto en mayúsculas */
+            font-size: 18px; /* Tamaño del texto */
+        }
+        td {
+            background-color: #0056b3; /* Color de fondo azul oscuro para datos */
+            color: #fff; /* Texto en blanco */
+            font-size: 16px; /* Tamaño del texto */
+        }
+        /* Estilos para el estado hover de las celdas de datos */
+        tr:hover td {
+            background-color: #003d7a; /* Color de fondo más oscuro al pasar el cursor */
+        }
+    </style>
 </head>
 
 <body>
+    <!-- Título de la tabla -->
+    <div class="table-title">Información de la Persona</div> 
 
-    <table border="1"> <!-- Crea una tabla con un borde de 1 píxel -->
-        <thead> <!-- Contiene el encabezado de la tabla -->
-            <tr> <!-- Fila de encabezado de la tabla -->
-                <th><h1>Nombre </h1></th> <!-- Encabezado de la columna para los nombres con un título grande -->
-                <th><h1>Teléfono</h1></th> <!-- Encabezado de la columna para los teléfonos con un título grande -->
-        <tbody> <!-- Contenido del cuerpo de la tabla -->
-            <tr> <!-- Fila de la tabla para los datos -->
-                <th>
-                    <h3>
-                        <span th:text="${persona.nombre}"></span> <!-- Muestra el nombre de la persona utilizando Thymeleaf -->
-                    </h3>
-                </th>
-
-                <th>
-                    <h3>
-                        <span th:text="${persona.telefono}"></span> <!-- Muestra el teléfono de la persona utilizando Thymeleaf -->
-                    </h3>
-                </th>
+    <!-- Tabla de datos -->
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th> <!-- Encabezado de columna para nombres -->
+                <th>Teléfono</th> <!-- Encabezado de columna para teléfonos -->
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <span th:text="${persona.nombre}"></span> <!-- Muestra el nombre de la persona -->
+                </td>
+                <td>
+                    <span th:text="${persona.telefono}"></span> <!-- Muestra el teléfono de la persona -->
+                </td>
             </tr>
         </tbody>
-
     </table>
-
 </body>
-<!--
-Explicación a nivel de bloque y flujo de ejecución:
-Declaración del tipo de documento y el elemento HTML:
 
-<!DOCTYPE html>: Esta declaración define el documento como HTML5.
-
-<html lang="es" xmlns:th="http://www.thymeleaf.org">: Inicia el documento HTML, especifica que el contenido está en español (lang="es") y define el namespace (xmlns:th="http://www.thymeleaf.org") necesario para usar las funcionalidades de Thymeleaf.
-
-Encabezado del documento:
-
-<head>: Contiene meta-información sobre el documento.
-
-<meta charset="utf-8">: Define la codificación de caracteres como UTF-8, asegurando que se muestren correctamente los caracteres especiales.
-
-<title>com.ComoHacerPeticionesPost.controller</title>: El título de la página web que se muestra en la pestaña del navegador.
-
-Cuerpo del documento:
-
-<body>: Contiene el contenido visible de la página web.
-
-<table border="1">: Inicia una tabla con un borde de 1 píxel.
-
-<thead>: Contiene el encabezado de la tabla.
-
-<tr>: Fila de la tabla para los encabezados.
-
-<th><h1>Nombre </h1></th>: Encabezado de la columna para los nombres con un título grande (<h1>).
-
-<th><h1>Teléfono</h1></th>: Encabezado de la columna para los teléfonos con un título grande (<h1>).
-
-<tbody>: Contenido del cuerpo de la tabla.
-
-<tr>: Fila de la tabla para los datos.
-
-<th>: Celda de la tabla.
-
-<h3><span th:text="${persona.nombre}"></span></h3>: Muestra el nombre de la persona utilizando Thymeleaf dentro de un título <h3>.
-
-<th>: Celda de la tabla.
-
-<h3><span th:text="${persona.telefono}"></span></h3>: Muestra el teléfono de la persona utilizando Thymeleaf dentro de un título <h3>.
-
-Flujo de ejecución:
-Declaración del tipo de documento y configuración inicial:
-
-El navegador interpreta que el documento es HTML5 y prepara la página para contenido en español.
-
-Configuración del encabezado:
-
-La página establece la codificación de caracteres y define un título.
-
-Cuerpo y contenido dinámico:
-
-Utilizando Thymeleaf, el servidor procesa las expresiones th:text para insertar valores dinámicos en el HTML.
-
-${persona.nombre} y ${persona.telefono} son valores del modelo que se insertan en los elementos <span> al renderizar la página.
-
- -->
 </html>
