@@ -30,6 +30,8 @@ public class Usuario { // Representa la entidad Usuario
 	@Column(name = "direccion", length = 150) // Mapea el campo a la columna "direccion" con longitud máxima de 150 caracteres
 	private String direccion; // Campo que representa la columna "direccion" en la base de datos
 
+
+
 	// Constructor con parámetros
 	public Usuario(int id, String nombre, String apellidos, String telefono, String correo, String direccion) {
 		this.id = id; // Asigna el valor del parámetro id al campo id
