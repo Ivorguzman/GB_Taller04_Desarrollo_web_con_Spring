@@ -4,7 +4,7 @@ import java.util.List; // Importa la clase List de java.util para manejar listas
 
 import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
-public interface I_UsuarioService { // Define una interfaz pública llamada ItfUsuarioService
+public interface Itf_UsuarioService { // Define una interfaz pública llamada I_UsuarioService
 
 	// Método para listar todos los usuarios
 	public abstract List<Usuario> listAllUsuario();
@@ -24,7 +24,7 @@ public interface I_UsuarioService { // Define una interfaz pública llamada ItfU
  * La palabra clave public indica que la interfaz es accesible desde cualquier otra clase o paquete.
  * La palabra clave interface indica que se trata de una interfaz y no de una clase.
  * 
- * El nombre ItfUsuarioService es el identificador de la interfaz, que debe seguir las convenciones
+ * El nombre Itf_UsarioReposito es el identificador de la interfaz, que debe seguir las convenciones
  * de Java para los nombres de las interfaces. Por lo general, se usa una letra mayúscula al inicio
  * y se usa el prefijo Itf para indicar que es una interfaz.
  * 
