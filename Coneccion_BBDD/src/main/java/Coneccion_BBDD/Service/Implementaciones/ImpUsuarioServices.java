@@ -6,17 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired; // Importa la ano
 import org.springframework.beans.factory.annotation.Qualifier; // Importa la anotación @Qualifier de Spring
 import org.springframework.stereotype.Service; // Importa la anotación @Service de Spring
 
-import Coneccion_BBDD.Repository.ItfUsarioRepository; // Importa la interfaz ItfUsarioRepository
-import Coneccion_BBDD.Service.ItfUsuarioService; // Importa la interfaz ItfUsuarioService
+import Coneccion_BBDD.Repository.I_UsarioRepository; // Importa la interfaz ItfUsarioRepository
+import Coneccion_BBDD.Service.I_UsuarioService; // Importa la interfaz ItfUsuarioService
 import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
 
 @Service("itfUsuarioService") // Marca la clase como un servicio de Spring con el nombre "itfUsuarioService"
-public class ImpUsuarioServices implements ItfUsuarioService { // Implementa la interfaz ItfUsuarioService
+public class ImpUsuarioServices implements I_UsuarioService { // Implementa la interfaz ItfUsuarioService
 
 	@Autowired // Indica que Spring debe inyectar una instancia del bean ItfUsarioRepository
 	@Qualifier("itfUsarioRepository") // Especifica cuál bean debe ser inyectado si hay más de uno
-	private ItfUsarioRepository itfUsarioRepository; // Declaración del repositorio
+	private I_UsarioRepository itfUsarioRepository; // Declaración del repositorio
 
 	@Override // Indica que este método sobrescribe un método en la interfaz ItfUsuarioService
 	public List<Usuario> listAllUsuario() {

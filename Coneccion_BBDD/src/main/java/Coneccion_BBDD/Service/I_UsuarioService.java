@@ -4,7 +4,7 @@ import java.util.List; // Importa la clase List de java.util para manejar listas
 
 import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
-public interface ItfUsuarioService { // Define una interfaz pública llamada ItfUsuarioService
+public interface I_UsuarioService { // Define una interfaz pública llamada ItfUsuarioService
 
 	// Método para listar todos los usuarios
 	public abstract List<Usuario> listAllUsuario();

@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping; // Importa la anotac
 import org.springframework.web.bind.annotation.RequestMapping; // Importa la anotación @RequestMapping de Spring
 import org.springframework.web.servlet.ModelAndView; // Importa la clase ModelAndView de Spring
 
-import Coneccion_BBDD.Service.ItfUsuarioService; // Importa la interfaz ItfUsuarioService
+import Coneccion_BBDD.Service.I_UsuarioService; // Importa la interfaz ItfUsuarioService
 import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
 @Controller // Marca la clase como un controlador de Spring MVC
@@ -18,7 +18,7 @@ public class UsuarioController {
 
 	@Autowired // Indica que Spring debe inyectar una instancia del bean ItfUsuarioService
 	@Qualifier("itfUsuarioService") // Especifica cuál bean debe ser inyectado si hay más de uno
-	private ItfUsuarioService itfUsuarioService; // Declaración del servicio
+	private I_UsuarioService itfUsuarioService; // Declaración del servicio
 
 	@GetMapping("/list") // Mapea las solicitudes GET a la ruta "/list"
 	public ModelAndView listarUsuarios() {
