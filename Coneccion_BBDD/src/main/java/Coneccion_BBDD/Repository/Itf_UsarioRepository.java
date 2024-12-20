@@ -7,7 +7,11 @@ import org.springframework.stereotype.Repository; // Importa la anotación @Repo
 
 import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 
-@Repository("itfUsarioRepository") // Marca la interfaz como un repositorio de Spring con el nombre "itfUsarioRepository"
+
+// Esta interfaz extiende JpaRepository y se anota con @Repository, indicando que es un componente de repositorio
+// que interactúa con la base de datos.La anotación @Repository hace que Spring detecte esta interfaz como un bean,
+// gestionando su ciclo de vida y permitiendo su inyección.
+@Repository("itfUsuarioRepository")
 public interface Itf_UsarioRepository extends JpaRepository<Usuario, Serializable> {
 
 }
