@@ -16,7 +16,7 @@ import Coneccion_BBDD.model.Usuario; // Importa la clase Usuario
 public class ImpUsuarioServices implements Itf_UsuarioService { // Implementa la interfaz Itf_UsuarioService
 
 	@Autowired // Indica que Spring debe inyectar una instancia del bean Itf_UsuarioService
-	@Qualifier("itfUsarioRepository") // Especifica cuál bean debe ser inyectado si hay más de uno
+	@Qualifier("itfUsuarioRepository") // Especifica cuál bean debe ser inyectado si hay más de uno
 	private Itf_UsarioRepository itfUsuarioRepository; // Declaración del repositorio
 
 	@Override // Indica que este método sobrescribe un método en la interfaz Itf_UsuarioService
